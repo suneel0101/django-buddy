@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block nav_bar_content %}
+<div>
+    <form class="navbar-form pull-right" method="POST" action="."> {% csrf_token %}
+      <input type='text' name='username' placeholder='username'/>
+      <input type='password' name='password' placeholder='password'/>
+      <input class='btn btn-success' type='submit' value='Login'/ >
+    </form>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="hero-unit">
+  <h1 style="margin-bottom:15px">Your App!</h1>
+  <p>A great solution to all of the problems in the world.</p>
+</div>
+
+<div class="row">
+  <div class="span4">
+    <h2>Do something.</h2>
+     <p>Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.</p>
+  </div>
+  <div class="span4">
+    <h2>Do something else.</h2>
+     <p>Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.</p>
+ </div>
+  <div class="span4">
+    <h2>Now you're done.</h2>
+    <p>Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.</p>
+  </div>
+</div>
+{% endblock %}
