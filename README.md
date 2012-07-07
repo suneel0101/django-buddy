@@ -36,5 +36,4 @@ pip, virtualenv
       home.html - basic home page after having logged in
    settings/
       settings.py
-      You can add different local/dev/staging/production settings files in the settings module
-```
+      You can add different local/dev/staging/production settings files in the settings module```
