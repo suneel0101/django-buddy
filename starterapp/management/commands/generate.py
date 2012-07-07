@@ -13,7 +13,12 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         source = os.getcwd()
-        destination = kwargs.get('path') + kwargs.get('name')
+        # This is hacky but okay for now
+        destination = kwargs.get('path')
+        if destination[len(destination)-1] != '/':
+                destination = '{}/'.format(destination)
+        if kwargs.get('name'):
+                destination = '{}{}'.format(destination, kwargs.get('name'))
         print "Copying seed project to {}...".format(destination)
         shutil.copytree(source, destination)
         os.chdir(destination)
