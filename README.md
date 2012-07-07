@@ -20,3 +20,21 @@ pip, virtualenv
 ![Screenshot of logged in homepage](https://github.com/suneel0101/django-buddy/raw/master/images/home_page.png)
 ## Admin
 ![Screenshot of admin](https://github.com/suneel0101/django-buddy/raw/master/images/django-admin.png)
+
+# Project Structure:
+```project_name /
+   starter_app/
+        views, admin, models, management commands
+   media/
+        css/
+           twitter bootstrap css
+        js/
+           twitter bootstrap js
+   templates/
+      base.html  - template base
+      login.html - basic landing page with login functionality
+      home.html - basic home page after having logged in
+   settings/
+      settings.py
+      You can add different local/dev/staging/production settings files in the settings module
+```
