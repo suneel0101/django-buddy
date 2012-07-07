@@ -1,6 +1,3 @@
-django-buddy
-============
-
 # Purpose
 This will create a Django project for you that is already built with a landing page with login and a logged in homepage. The templates use Twitter Boostrap CSS and JS.
 
@@ -16,4 +13,10 @@ pip, virtualenv
 5. The script will create a virtual environment, install dependencies, sync the db, do an initial South migration and initialize a git repository.
 6. Finally, it will runserver on localhost:8000.
 
-For more information, checkout the wiki!
+# What it looks like
+## Landing page
+![Screenshot of landing page](https://github.com/suneel0101/django-buddy/raw/master/images/landing_page.png)
+## Logged in homepage
+![Screenshot of logged in homepage](https://github.com/suneel0101/django-buddy/raw/master/images/home_page.png)
+## Admin
+![Screenshot of admin](https://github.com/suneel0101/django-buddy/raw/master/images/django-admin.png)
