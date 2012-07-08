@@ -2,8 +2,8 @@
 This will create a Django project for you that is already built with a landing page with login and a logged in homepage. The templates use Twitter Boostrap CSS and JS. You can also deploy directly to Heroku in the same one line.
 
 # Dependencies
-* pip
-* virtualenv
+* pip (http://pypi.python.org/pypi/pip/)
+* virtualenv (http://pypi.python.org/pypi/virtualenv/ or just pip install virtualenv)
 * a (free) Heroku account (https://api.heroku.com/signup)
 * Heroku Toolbelt (https://toolbelt.herokuapp.com/)
 
