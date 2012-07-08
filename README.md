@@ -65,7 +65,7 @@ project_name /
    templates/
       base.html  - template base
       login.html - basic landing page with login functionality
-      home.html - basic home page after having logged in
+      home.html - basic logged in home page
    settings/
       settings.py
       You can add different local/dev/staging/production settings files in the settings module
