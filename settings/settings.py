@@ -1,5 +1,3 @@
-from externalapps import *
-
 try:
     from active import *
 except ImportError:
@@ -79,10 +77,9 @@ INSTALLED_APPS = (
      'django.contrib.admin',
      'django.contrib.admindocs',
      'starterapp',
+     'gunicorn',
+     'south'
 )
-
-#Gets any external apps from externalapps.py and adds them to INSTALLED_APPS
-INSTALLED_APPS += get_external_apps()
 
 LOGGING = {
     'version': 1,
