@@ -60,7 +60,8 @@ python manage.py generate --path='/Users/cooldude/Documents/MyProjects/' --name=
 ```
 
 ## Deploy after creating:
-First, generate the project without `--deploy`. Modify the project however you like until you're ready to deploy it. Then just run
+First, generate the project as described above in https://github.com/suneel0101/django-buddy/blob/master/README.md#create-your-project.
+Modify the project however you like until you're ready to deploy it. Then just run
 ```
 python manage.py deploy
 ```
