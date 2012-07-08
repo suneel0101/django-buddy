@@ -14,6 +14,8 @@ pip, virtualenv, Heroku Toolbelt (https://toolbelt.herokuapp.com/)
 6. Finally, it will runserver on localhost:8000.
 
 # Create your project AND deploy all in one line
+Note that you need to install Heroku toolbelt (above in Dependencies), but that's it!
+
 If you want to also deploy the app the heroku at the same time you create it, then just run
 `python manage.py generate --path='/Users/cooldude/Documents/MyProjects/' --name='coolproject' --deploy`
 
