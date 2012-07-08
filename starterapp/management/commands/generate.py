@@ -20,8 +20,10 @@ class Command(BaseCommand):
         if kwargs.get('deploy'):
             print "!!!!!!!!!!!!!!! DEPLOYING TO HEROKU !!!!!!!!!!!!!!!!!!"
             self.deploy()
-        print "Running local server..."
-        self.runserver()
+            print "Your app is now live! Check it out!"
+        else:
+            print "Running local server..."
+            self.runserver()
 
     def plant_seed(self, **kwargs):
         source = os.getcwd()
