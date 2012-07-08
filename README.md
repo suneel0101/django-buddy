@@ -1,5 +1,16 @@
 # Purpose
-This will create a Django project for you that is already built with a landing page with login and a logged in homepage. The templates use Twitter Boostrap CSS and JS. You can also deploy directly to Heroku in the same one line.
+Setting up a project an deploying it is always a huge hassle!
+But...not anymore! With DjangoBuddy, in just one line you can generate a skeleton app and deploy it to Heroku!
+
+# What you get
+* landing page with built in login/out functionality in the frontend and the backend
+* logged in home page connected to login and logout functionality
+* all templates use Twitter Bootstrap CSS and JSS
+* models, views, urls files populated with all the import statements you usually need
+* one command that generates the app, creates a virtualenv, installs all your requirements for local development AND Heroku deployment(Django, Mysql, Gunicorn, South, etc)
+* that same one command can also directly deploy to Heroku
+* standard django app structure
+
 
 # Dependencies
 * pip (http://pypi.python.org/pypi/pip/)
