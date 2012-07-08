@@ -15,9 +15,9 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         self.plant_seed(**kwargs)
         self.install()
-        self.setup_gitignore()
         print "Syncing local copy of your app..."
         self.sync_local()
+        self.setup_gitignore()
         if kwargs.get('deploy'):
             print "!!!!!!!!!!!!!!! DEPLOYING TO HEROKU !!!!!!!!!!!!!!!!!!"
             self.deploy()
