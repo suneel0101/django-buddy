@@ -17,12 +17,11 @@ pip, virtualenv, Heroku Toolbelt (https://toolbelt.herokuapp.com/) and a (free) 
 Note that you need to install Heroku toolbelt (above in Dependencies), but that's it!
 
 
-1. Instantly create and deploy:
+## Instantly create and deploy:
 `python manage.py generate --path='/Users/cooldude/Documents/MyProjects/' --name='coolproject' --deploy`
 
-2. Deploy after creating:
-
-First generate the project without '--deploy'. Modify the project however you like until you're ready to deploy it. Then just run
+## Deploy after creating:
+First, generate the project without '--deploy'. Modify the project however you like until you're ready to deploy it. Then just run
 `python manage.py deploy`
 
 When deploying, you will be prompted to create a superuser for your Heroku hosted database in exactly the same way as it would happen for local.
