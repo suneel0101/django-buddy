@@ -20,6 +20,8 @@ If you want to also deploy the app the heroku at the same time you create it, th
 If you want to first generate the app and add to it according to your needs and then deploy it, when you're ready just run
 `python manage.py deploy`
 
+When deploying, you will be prompted to create a superuser for your Heroku hosted database in exactly the same way as it would happen for local.
+
 
 # Project Structure:
 ```
