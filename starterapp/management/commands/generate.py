@@ -14,10 +14,11 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         self.plant_seed(**kwargs)
+        self.generate_requirements()
         self.install()
         print "Syncing local copy of your app..."
         self.sync_local()
-        self.setup_gitignore()
+        #self.setup_gitignore()
         if kwargs.get('deploy'):
             print "!!!!!!!!!!!!!!! DEPLOYING TO HEROKU !!!!!!!!!!!!!!!!!!"
             self.deploy()
@@ -46,6 +47,18 @@ class Command(BaseCommand):
         os.system('find . -name "default_db" -exec rm -rf {} \;')
         os.system('rm starterapp/management/commands/generate.py')
 
+    def generate_requirements(self):
+        f = open(os.getcwd() + '/requirements.txt', 'w+')
+        f.write('Django==1.4\n')
+        f.write('distribute==0.6.24\n')
+        f.write('psycopg2==2.4.5\n')
+        f.write('wsgiref==0.1.2\n')
+        f.write('MySQL-python==1.2.3\n')
+        f.write('gunicorn==0.14.2\n')
+        f.write('South==0.7.4\n')
+        f.write('dj-database-url==0.2.0\n')
+        f.close()
+
     def install(self):
         print "Installing virtualenv with distribute..."
         os.system('virtualenv venv --distribute')
@@ -53,14 +66,14 @@ class Command(BaseCommand):
         os.system('pip install -r requirements.txt')
         print "Syncing db..."
 
-    def setup_gitignore(self):
-        f = open(os.getcwd() + '.gitignore', 'w+')
-        f.write('*.pyc\n')
-        f.write('venv/*\n')
-        f.write('default_db\n')
-        f.write('.DS_Store\n')
-        f.write('active.py\n')
-        f.close()
+    # def setup_gitignore(self):
+    #     f = open(os.getcwd() + '/.gitignore', 'w+')
+    #     f.write('*.pyc\n')
+    #     f.write('venv/*\n')
+    #     f.write('default_db\n')
+    #     f.write('.DS_Store\n')
+    #     f.write('active.py\n')
+    #     f.close()
 
     def sync_local(self):
         os.system('python manage.py syncdb')
