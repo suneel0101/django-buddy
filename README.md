@@ -8,13 +8,17 @@ This will create a Django project for you that is already built with a landing p
 * Heroku Toolbelt (https://toolbelt.herokuapp.com/)
 
 # Create your project
-1. Select the destination where you want your project to live, i.e. /Users/cooldude/Documents/MyProjects/
-2. Select your project name, i.e. coolproject
-3. Download django-buddy and in the root directory (which has manage.py), run the following command
-`python manage.py generate --path='/Users/cooldude/Documents/MyProjects/' --name='coolproject'`
-4. The script will prompt you to create a superuser for the database, which is SQLite
-5. The script will create a virtual environment, install dependencies, sync the db, do an initial South migration and initialize a git repository.
-6. Finally, it will runserver on localhost:8000.
+First, decide your project name (i.e. coolproject) amd the path where you want your project to live (i.e. /Users/cooldude/Documents/MyProjects/)
+
+Download django-buddy and in the root directory (which has manage.py), run the following command
+
+```python manage.py generate --path='/Users/cooldude/Documents/MyProjects/' --name='coolproject'```
+
+The script will prompt you to create a superuser for the database, which is SQLite.
+
+The script will create a virtual environment, install dependencies, sync the db, do an initial South migration and initialize a git repository.
+
+Finally, it will runserver on localhost:8000.
 
 # Create your project AND deploy all in one line
 Note that you need to install Heroku toolbelt (above in Dependencies), but that's it!
