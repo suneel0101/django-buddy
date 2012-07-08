@@ -48,8 +48,8 @@ project_name /
 
 # What it looks like
 ## Landing page
-![Screenshot of landing page](https://github.com/suneel0101/django-buddy/raw/master/images/landing_page.png)
+![Screenshot of landing page](https://github.com/suneel0101/django-buddy/raw/master/media/img/landing_page.png)
 ## Logged in homepage
-![Screenshot of logged in homepage](https://github.com/suneel0101/django-buddy/raw/master/images/home_page.png)
+![Screenshot of logged in homepage](https://github.com/suneel0101/django-buddy/raw/master/media/img/home_page.png)
 ## Admin
-![Screenshot of admin](https://github.com/suneel0101/django-buddy/raw/master/images/django-admin.png)
+![Screenshot of admin](https://github.com/suneel0101/django-buddy/raw/master/media/img/django-admin.png)
