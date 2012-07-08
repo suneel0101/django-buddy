@@ -12,7 +12,9 @@ First, decide your project name (i.e. coolproject) amd the path where you want y
 
 Download django-buddy and in the root directory (which has manage.py), run the following command
 
-```python manage.py generate --path='/Users/cooldude/Documents/MyProjects/' --name='coolproject'```
+```
+python manage.py generate --path='/Users/cooldude/Documents/MyProjects/' --name='coolproject'
+```
 
 The script will prompt you to create a superuser for the database, which is SQLite.
 
