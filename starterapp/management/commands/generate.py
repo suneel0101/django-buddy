@@ -9,14 +9,19 @@ class Command(BaseCommand):
     option_list = BaseCommand.option_list + (
         make_option("-p", "--path", type="string", dest="path", default=None, help='Path to folder'),
         make_option("-n", "--name", type="string", dest="name", default=None, help='Name of project'),
+        make_option('--deploy', action='store_true', dest='deploy', default=False, help="Deploys to Heroku."),
     )
 
     def handle(self, *args, **kwargs):
         self.plant_seed(**kwargs)
         self.install()
-        self.sync_and_runserver()
+        print "Syncing local copy of your app..."
+        self.sync_local()
         if kwargs.get('deploy'):
+            print "!!!!!!!!!!!!!!! DEPLOYING TO HEROKU !!!!!!!!!!!!!!!!!!"
             self.deploy()
+        print "Running local server..."
+        self.runserver()
 
     def plant_seed(self, **kwargs):
         source = os.getcwd()
@@ -36,13 +41,6 @@ class Command(BaseCommand):
         os.system('find . -name "default_db" -exec rm -rf {} \;')
         os.system('rm starterapp/management/commands/generate.py')
 
-    # def generate_active_settings(self):
-    #     f = open(os.getcwd() + '/settings/active.py', 'w+')
-    #     f.write('LOCAL = True\n')
-    #     f.write('def get_env():\n')
-    #     f.write('    return LOCAL\n')
-    #     f.close()
-
     def install(self):
         print "Installing virtualenv with distribute..."
         os.system('virtualenv venv --distribute')
@@ -50,19 +48,22 @@ class Command(BaseCommand):
         os.system('pip install -r requirements.txt')
         print "Syncing db..."
 
-    def sync_and_runserver(self):
+    def sync_local(self):
         os.system('python manage.py syncdb')
         print "Running initial South migration..."
         os.system('python manage.py migrate')
         print "Initializing git repo"
         os.system('git init')
-        print "Running server at 127.0.0.1:8000....."
+
+    def runserver(self):
         os.system('python manage.py runserver')
 
     def deploy(self):
         os.system('heroku create')
         os.system('git add .')
-        os.system("git commit -m 'first commit to heroku")
+        # Hacky, TODO: make it less hacky
+        os.system('git rm starterapp/management/commands/generate.py')
+        os.system("git commit -m 'first commit to heroku'")
         os.system('git push heroku master')
         os.system('heroku run python manage.py syncdb')
         os.system('heroku run python manage.py migrate')
