@@ -1,8 +1,8 @@
 # Purpose
-This will create a Django project for you that is already built with a landing page with login and a logged in homepage. The templates use Twitter Boostrap CSS and JS.
+This will create a Django project for you that is already built with a landing page with login and a logged in homepage. The templates use Twitter Boostrap CSS and JS. You can also deploy directly to Heroku in the same one line.
 
 # Dependencies
-pip, virtualenv
+pip, virtualenv, Heroku Toolbelt (https://toolbelt.herokuapp.com/)
 
 # Create your project
 1. Select the destination where you want your project to live, i.e. /Users/cooldude/Documents/MyProjects/
