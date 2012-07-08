@@ -27,7 +27,12 @@ Download django-buddy
 git clone https://github.com/suneel0101/django-buddy
 ```
 
-In the root directory (which has manage.py), run the following command
+Get in the root directory (which has manage.py)
+```
+cd django-buddy 
+```
+
+Then, run the following command
 
 ```
 python manage.py generate --path='/Users/cooldude/Documents/MyProjects/' --name='coolproject'
