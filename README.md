@@ -21,6 +21,7 @@ Note that you need to install Heroku toolbelt (above in Dependencies), but that'
 `python manage.py generate --path='/Users/cooldude/Documents/MyProjects/' --name='coolproject' --deploy`
 
 2. Deploy after creating:
+
 First generate the project without '--deploy'. Modify the project however you like until you're ready to deploy it. Then just run
 `python manage.py deploy`
 
