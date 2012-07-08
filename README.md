@@ -6,7 +6,7 @@ pip, virtualenv, Heroku Toolbelt (https://toolbelt.herokuapp.com/) and a (free) 
 
 # Create your project
 1. Select the destination where you want your project to live, i.e. /Users/cooldude/Documents/MyProjects/
-2. Select your project name
+2. Select your project name, i.e. coolproject
 3. Download django-buddy and in the root directory (which has manage.py), run the following command
 `python manage.py generate --path='/Users/cooldude/Documents/MyProjects/' --name='coolproject'`
 4. The script will prompt you to create a superuser for the database, which is SQLite
