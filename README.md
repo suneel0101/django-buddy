@@ -20,7 +20,7 @@ No caveats. Run the command and your site will immediately be live.
 * Heroku Toolbelt (https://toolbelt.herokuapp.com/)
 
 # Create your project
-First, decide your project name (i.e. coolproject) amd the path where you want your project to live (i.e. /Users/cooldude/Documents/MyProjects/)
+First, decide your project name (i.e. coolproject) and the path where you want your project to live (i.e. /Users/cooldude/Documents/MyProjects/)
 
 Download django-buddy
 ```
