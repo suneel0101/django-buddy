@@ -37,6 +37,8 @@ class Command(BaseCommand):
 
         print "Copying seed project to {}...".format(destination)
         shutil.copytree(source, destination)
+        print "Installing requirements..."
+        os.system('pip install -r requirements.txt')
         os.chdir(destination)
         print os.getcwd()
 
