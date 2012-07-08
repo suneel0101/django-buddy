@@ -13,7 +13,6 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         self.plant_seed(**kwargs)
-        self.generate_active_settings()
         self.install()
         self.sync_and_runserver()
         if kwargs.get('deploy'):
@@ -37,12 +36,12 @@ class Command(BaseCommand):
         os.system('find . -name "default_db" -exec rm -rf {} \;')
         os.system('rm starterapp/management/commands/generate.py')
 
-    def generate_active_settings(self):
-        f = open(os.getcwd() + '/settings/active.py', 'w+')
-        f.write('LOCAL = True\n')
-        f.write('def get_env():\n')
-        f.write('    return LOCAL\n')
-        f.close()
+    # def generate_active_settings(self):
+    #     f = open(os.getcwd() + '/settings/active.py', 'w+')
+    #     f.write('LOCAL = True\n')
+    #     f.write('def get_env():\n')
+    #     f.write('    return LOCAL\n')
+    #     f.close()
 
     def install(self):
         print "Installing virtualenv with distribute..."
