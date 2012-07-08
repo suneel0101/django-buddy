@@ -46,6 +46,7 @@ Finally, it will runserver on localhost:8000.
 
 # Create your project AND deploy all in one line
 If you also want to deploy your app, then you have two options:
+
 1. Generate the app and deploy it all in one command.
 2. Generate the app, modify it and then deploy it.
 Both of these cases are addressed below.
