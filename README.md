@@ -1,5 +1,5 @@
 # Purpose
-Setting up a project an deploying it is always a huge hassle!
+Setting up and deploying a project is always a huge hassle!
 But...not anymore! With DjangoBuddy, in just one line you can generate a skeleton app and deploy it to Heroku!
 No caveats. Run the command and your site will immediately be live.
 
