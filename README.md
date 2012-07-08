@@ -1,5 +1,5 @@
 # Purpose
-Setting up a project an deploying it is always a huge hassle!
+Setting up and deploying a project is always a huge hassle!
 But...not anymore! With DjangoBuddy, in just one line you can generate a skeleton app and deploy it to Heroku!
 No caveats. Run the command and your site will immediately be live.
 
@@ -22,7 +22,17 @@ No caveats. Run the command and your site will immediately be live.
 # Create your project
 First, decide your project name (i.e. coolproject) amd the path where you want your project to live (i.e. /Users/cooldude/Documents/MyProjects/)
 
-Download django-buddy and in the root directory (which has manage.py), run the following command
+Download django-buddy
+```
+git clone https://github.com/suneel0101/django-buddy
+```
+
+Get in the root directory (which has manage.py)
+```
+cd django-buddy 
+```
+
+Then, run the following command
 
 ```
 python manage.py generate --path='/Users/cooldude/Documents/MyProjects/' --name='coolproject'
@@ -35,6 +45,12 @@ The script will create a virtual environment, install dependencies, sync the db,
 Finally, it will runserver on localhost:8000.
 
 # Create your project AND deploy all in one line
+If you also want to deploy your app, then you have two options:
+
+1. Generate the app and deploy it all in one command.
+2. Generate the app, modify it and then deploy it.
+Both of these cases are addressed below.
+
 Note that you need to install Heroku toolbelt (above in Dependencies), but that's it!
 
 
@@ -44,7 +60,8 @@ python manage.py generate --path='/Users/cooldude/Documents/MyProjects/' --name=
 ```
 
 ## Deploy after creating:
-First, generate the project without `--deploy`. Modify the project however you like until you're ready to deploy it. Then just run
+First, generate the project as described above, without the `--deploy`.
+Modify the project however you like until you're ready to deploy it. Then just run
 ```
 python manage.py deploy
 ```
@@ -65,7 +82,7 @@ project_name /
    templates/
       base.html  - template base
       login.html - basic landing page with login functionality
-      home.html - basic home page after having logged in
+      home.html - basic logged in home page
    settings/
       settings.py
       You can add different local/dev/staging/production settings files in the settings module
