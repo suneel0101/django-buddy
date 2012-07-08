@@ -5,7 +5,7 @@ But...not anymore! With DjangoBuddy, in just one line you can generate a skeleto
 # What you get
 * landing page with built in login/out functionality in the frontend and the backend
 * logged in home page connected to login and logout functionality
-* all templates use Twitter Bootstrap CSS and JSS
+* templates that use Twitter Bootstrap CSS and JSS
 * models, views, urls files populated with all the import statements you usually need
 * one command that generates the app, creates a virtualenv, installs all your requirements for local development AND Heroku deployment(Django, Mysql, Gunicorn, South, etc)
 * that same one command can also directly deploy to Heroku
