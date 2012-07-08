@@ -16,6 +16,8 @@ class Command(BaseCommand):
         self.generate_active_settings()
         self.install()
         self.sync_and_runserver()
+        if kwargs.get('deploy'):
+            self.deploy()
 
     def plant_seed(self, **kwargs):
         source = os.getcwd()
@@ -36,12 +38,10 @@ class Command(BaseCommand):
         os.system('rm starterapp/management/commands/generate.py')
 
     def generate_active_settings(self):
-        f = open(os.getcwd() + '/settings/ractive.py', 'w+')
+        f = open(os.getcwd() + '/settings/active.py', 'w+')
         f.write('LOCAL = True\n')
-        f.write('if LOCAL:\n')
-        f.write('    from settings import local_settings\n')
-        f.write('else:\n')
-        f.write('    from settings import settings\n')
+        f.write('def get_env():\n')
+        f.write('    return LOCAL\n')
         f.close()
 
     def install(self):
@@ -59,3 +59,11 @@ class Command(BaseCommand):
         os.system('git init')
         print "Running server at 127.0.0.1:8000....."
         os.system('python manage.py runserver')
+
+    def deploy(self):
+        os.system('heroku create')
+        os.system('git add .')
+        os.system("git commit -m 'first commit to heroku")
+        os.system('git push heroku master')
+        os.system('heroku run python manage.py syncdb')
+        os.system('heroku run python manage.py migrate')

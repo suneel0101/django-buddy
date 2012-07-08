@@ -1,4 +1,11 @@
-import dj_database_url
+try:
+    from active import *
+except ImportError:
+    import dj_database_url
+    DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
+else:
+    if get_env():
+        from local_settings import *
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -8,8 +15,6 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
-
-DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
 
 TIME_ZONE = 'America/Chicago'
 
