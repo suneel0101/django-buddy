@@ -14,7 +14,6 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         self.plant_seed(**kwargs)
-        self.generate_requirements()
         self.install()
         print "Syncing local copy of your app..."
         self.sync_local()
@@ -42,21 +41,15 @@ class Command(BaseCommand):
         os.system('pip install -r requirements.txt')
         os.chdir(destination)
         print os.getcwd()
-
+        self.add_installed_apps_to_settings()
         os.system('find . -name "*.pyc" -exec rm -rf {} \;')
         os.system('find . -name "default_db" -exec rm -rf {} \;')
         os.system('rm starterapp/management/commands/generate.py')
 
-    def generate_requirements(self):
-        f = open(os.getcwd() + '/requirements.txt', 'w+')
-        f.write('Django==1.4\n')
-        f.write('distribute==0.6.24\n')
-        f.write('psycopg2==2.4.5\n')
-        f.write('wsgiref==0.1.2\n')
-        f.write('MySQL-python==1.2.3\n')
-        f.write('gunicorn==0.14.2\n')
-        f.write('South==0.7.4\n')
-        f.write('dj-database-url==0.2.0\n')
+    def add_installed_apps_to_settings(self):
+        f = open(os.getcwd() + '/settings/externalapps', 'w+')
+        f.write('def get_external_apps():\n')
+        f.write("    return ('gunicorn', 'south',)")
         f.close()
 
     def install(self):
