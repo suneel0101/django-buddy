@@ -23,9 +23,9 @@ No caveats. Run the command and your site will immediately be live.
 First, decide your project name (i.e. coolproject) amd the path where you want your project to live (i.e. /Users/cooldude/Documents/MyProjects/)
 
 Download django-buddy
-'''
+```
 git clone https://github.com/suneel0101/django-buddy
-'''
+```
 
 In the root directory (which has manage.py), run the following command
 
