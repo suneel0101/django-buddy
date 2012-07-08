@@ -13,6 +13,14 @@ pip, virtualenv
 5. The script will create a virtual environment, install dependencies, sync the db, do an initial South migration and initialize a git repository.
 6. Finally, it will runserver on localhost:8000.
 
+# Create your project AND deploy all in one line
+If you want to also deploy the app the heroku at the same time you create it, then just run
+`python manage.py generate --path='/Users/cooldude/Documents/MyProjects/' --name='coolproject' --deploy`
+
+If you want to first generate the app and add to it according to your needs and then deploy it, when you're ready just run
+`python manage.py deploy`
+
+
 # Project Structure:
 ```
 project_name /
