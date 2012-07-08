@@ -12,25 +12,46 @@ class Command(BaseCommand):
     )
 
     def handle(self, *args, **kwargs):
+        self.plant_seed(**kwargs)
+        self.generate_active_settings()
+        self.install()
+        self.sync_and_runserver()
+
+    def plant_seed(self, **kwargs):
         source = os.getcwd()
         # This is hacky but okay for now
         destination = kwargs.get('path')
-        if destination[len(destination)-1] != '/':
+        if destination[len(destination) - 1] != '/':
                 destination = '{}/'.format(destination)
         if kwargs.get('name'):
                 destination = '{}{}'.format(destination, kwargs.get('name'))
+
         print "Copying seed project to {}...".format(destination)
         shutil.copytree(source, destination)
         os.chdir(destination)
         print os.getcwd()
+
         os.system('find . -name "*.pyc" -exec rm -rf {} \;')
         os.system('find . -name "default_db" -exec rm -rf {} \;')
         os.system('rm starterapp/management/commands/generate.py')
+
+    def generate_active_settings(self):
+        f = open(os.getcwd() + '/settings/ractive.py', 'w+')
+        f.write('LOCAL = True\n')
+        f.write('if LOCAL:\n')
+        f.write('    from settings import local_settings\n')
+        f.write('else:\n')
+        f.write('    from settings import settings\n')
+        f.close()
+
+    def install(self):
         print "Installing virtualenv with distribute..."
         os.system('virtualenv venv --distribute')
         print "Installing requirements..."
         os.system('pip install -r requirements.txt')
         print "Syncing db..."
+
+    def sync_and_runserver(self):
         os.system('python manage.py syncdb')
         print "Running initial South migration..."
         os.system('python manage.py migrate')
