@@ -15,6 +15,7 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         self.plant_seed(**kwargs)
         self.install()
+        self.setup_gitignore()
         print "Syncing local copy of your app..."
         self.sync_local()
         if kwargs.get('deploy'):
@@ -49,6 +50,15 @@ class Command(BaseCommand):
         print "Installing requirements..."
         os.system('pip install -r requirements.txt')
         print "Syncing db..."
+
+    def setup_gitignore(self):
+        f = open(os.getcwd() + '.gitignore', 'w+')
+        f.write('*.pyc\n')
+        f.write('venv/*\n')
+        f.write('default_db\n')
+        f.write('.DS_Store\n')
+        f.write('active.py\n')
+        f.close()
 
     def sync_local(self):
         os.system('python manage.py syncdb')
