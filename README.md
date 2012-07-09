@@ -46,7 +46,7 @@ Then, it will deploy to Heroku and ask you to create a superuser for the live da
 
 ## Case 2: Create, modify and then deploy:
 ```
-python manage.py generate --path='/Users/cooldude/Documents/MyProjects/' --name='coolproject' --deploy
+python manage.py generate --path='/Users/cooldude/Documents/MyProjects/' --name='coolproject'
 ```
 Then,
 
