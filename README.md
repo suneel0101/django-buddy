@@ -1,73 +1,64 @@
 # Purpose
 Setting up and deploying a project is always a huge hassle!
 But...not anymore! With DjangoBuddy, in just one line you can generate a skeleton app and deploy it to Heroku!
-No caveats. Run the command and your site will immediately be live.
 
 # What you get
-* landing page with built in login/out functionality in the frontend and the backend
-* logged in home page connected to login and logout functionality
-* templates that use Twitter Bootstrap CSS and JSS
-* models, views, urls files populated with all the import statements you usually need
-* one command that generates the app, creates a virtualenv, installs all your requirements for local development AND production via Heroku (Django, Mysql, Gunicorn, South, etc)
-* that same one command can also directly deploy to Heroku
-* standard django app structure
+* landing page, home page and Django admin
+* built-in authentication based on Django auth
+* templates that use Twitter Bootstrap CSS and JS
+* standard Django app files populated with the necessary import statements
+* ONE COMMAND that generates and deploys your app
+
+# Before you start
+There are just a few easy and quick steps to take before you are on your way to an awesome and live site!
+
+1. If you don't have it, install pip (http://pypi.python.org/pypi/pip/)
+2. Make sure you have virtualenv (http://pypi.python.org/pypi/virtualenv/). You can just do ```pip install virtualenv```.
+3. Signup for a (free) Heroku account (https://api.heroku.com/signup)
+4. Download the Heroku Toolbelt (https://toolbelt.herokuapp.com/)
+
+# Get started
+Choose your project name (i.e. coolproject) and the path where you want your project to live (i.e. /Users/cooldude/Documents/MyProjects/)
 
 
-# Dependencies
-* pip (http://pypi.python.org/pypi/pip/)
-* virtualenv (http://pypi.python.org/pypi/virtualenv/ or just pip install virtualenv)
-* a (free) Heroku account (https://api.heroku.com/signup)
-* Heroku Toolbelt (https://toolbelt.herokuapp.com/)
+1. `git clone https://github.com/suneel0101/django-buddy`
+2. `heroku login`
+(You will be prompted to enter your Heroku username and password.)
+3. `cd django-buddy `
+4. `source venv/bin/activate`
+5. `pip install -r requirements.txt`
 
-# Create your project
-First, decide your project name (i.e. coolproject) and the path where you want your project to live (i.e. /Users/cooldude/Documents/MyProjects/)
 
-Download django-buddy
-```
-git clone https://github.com/suneel0101/django-buddy
-```
-
-Get in the root directory (which has manage.py)
-```
-cd django-buddy 
-```
-
-Then, run the following command
-
-```
-python manage.py generate --path='/Users/cooldude/Documents/MyProjects/' --name='coolproject'
-```
-
-The script will prompt you to create a superuser for the database, which is SQLite.
-
-The script will create a virtual environment, install dependencies, sync the db, do an initial South migration and initialize a git repository.
-
-Finally, it will runserver on localhost:8000.
-
-# Create your project AND deploy all in one line
-If you also want to deploy your app, then you have two options:
+# Create and deploy your project
+There are two main options.
 
 1. Generate the app and deploy it all in one command.
 2. Generate the app, modify it and then deploy it.
-Both of these cases are addressed below.
 
-Note that you need to install Heroku toolbelt (above in Dependencies), but that's it!
-
-
-## Instantly create and deploy:
+## Case 1: Generate and deploy all in one command
 ```
 python manage.py generate --path='/Users/cooldude/Documents/MyProjects/' --name='coolproject' --deploy
 ```
 
-## Deploy after creating:
-First, generate the project as described above, without the `--deploy`.
-Modify the project however you like until you're ready to deploy it. Then just run
+The script will prompt you to create a superuser for the local database.
+Then, it will deploy to Heroku and ask you to create a superuser for the live database.
+
+
+## Case 2: Create, modify and then deploy:
+```
+python manage.py generate --path='/Users/cooldude/Documents/MyProjects/' --name='coolproject' --deploy
+```
+Then,
+
+1. `cd /Users/cooldude/Documents/MyProjects/coolproject`
+2. `source venv/bin/activate`
+3. `pip install -r requirements.txt`
+
+Modify the project however you like until you're ready to deploy it. 
+Then,
 ```
 python manage.py deploy
 ```
-
-When deploying, you will be prompted to create a superuser for your Heroku hosted database in exactly the same way as it would happen for local.
-
 
 # Project Structure:
 ```
