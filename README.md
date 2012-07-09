@@ -21,7 +21,7 @@ There are just a few easy and quick steps to take before you are on your way to 
 Choose your project name (i.e. coolproject) and the path where you want your project to live (i.e. /Users/cooldude/Documents/MyProjects/)
 
 
-1. `git clone https://github.com/suneel0101/django-buddy`
+1. `git clone git://github.com/suneel0101/django-buddy.git`
 2. `heroku login`
 (You will be prompted to enter your Heroku username and password.)
 3. `cd django-buddy `
