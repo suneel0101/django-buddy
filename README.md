@@ -62,6 +62,7 @@ python manage.py deploy
 
 # Modifying the Django-Buddy generated app
 Make sure to run the following so that all requirements are installed:
+
 1. Get in your project directory
 2. `source venv/bin/activate`
 3. `pip install -r requirements.txt`
