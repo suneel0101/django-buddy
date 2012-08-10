@@ -54,11 +54,18 @@ Then,
 2. `source venv/bin/activate`
 3. `pip install -r requirements.txt`
 
-Modify the project however you like until you're ready to deploy it. 
+Modify the project however you like until you're ready to deploy it.
 Then,
 ```
 python manage.py deploy
 ```
+
+# Modifying the Django-Buddy generated app
+Make sure to run the following so that all requirements are installed:
+1. Get in your project directory
+2. `source venv/bin/activate`
+3. `pip install -r requirements.txt`
+
 
 # Project Structure:
 ```
