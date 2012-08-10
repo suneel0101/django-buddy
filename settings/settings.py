@@ -1,11 +1,19 @@
 try:
-    from active import *
+    from local import *
 except ImportError:
     import dj_database_url
     DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
 else:
-    if get_env():
-        from local_settings import *
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'default_db',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
+    }
+}
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
