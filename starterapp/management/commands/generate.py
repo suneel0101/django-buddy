@@ -37,6 +37,8 @@ class Command(BaseCommand):
 
         print "Copying seed project to {}...".format(destination)
         shutil.copytree(source, destination)
+        f = open(destination + '/settings/local.py', 'w+')
+        f.close()
         print "Installing requirements..."
         os.system('pip install -r requirements.txt')
         os.chdir(destination)
@@ -54,19 +56,22 @@ class Command(BaseCommand):
         print "Syncing db..."
 
     def setup_gitignore(self):
-        f = open(os.getcwd() + '.gitignore', 'w+')
-        f.write('*.pyc\n')
-        f.write('venv/*\n')
-        f.write('default_db\n')
-        f.write('.DS_Store\n')
-        f.write('active.py\n')
-        f.close()
+        # f = open(os.getcwd() + '.gitignore', 'w+')
+        # f.write('*.pyc\n')
+        # f.write('venv/*\n')
+        # f.write('default_db\n')
+        # f.write('.DS_Store\n')
+        # f.write('active.py\n')
+        # f.close()
+        pass
 
     def sync_local(self):
         os.system('python manage.py syncdb')
         print "Running initial South migration..."
         os.system('python manage.py migrate')
         print "Initializing git repo"
+        os.system('git remote rm master')
+        os.system('git remote rm buddy')
         os.system('git init')
 
     def runserver(self):
