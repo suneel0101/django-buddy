@@ -3,3 +3,4 @@ venv/*
 default_db
 .DS_Store
 local.py
+*sass-cache*
