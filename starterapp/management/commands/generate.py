@@ -56,7 +56,9 @@ class Command(BaseCommand):
     def rename_app(self, **kwargs):
         views = self.destination + '/urls.py'
         settings = self.destination + '/settings/__init__.py'
+        base = self.destination + '/templates/base.html'
         self.replace_app_name_in_file(views)
+        self.replace_app_name_in_file(base)
         self.replace_app_name_in_file(settings)
         os.system("mv starterapp {}".format(self.app_name))
 

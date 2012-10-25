@@ -105,15 +105,14 @@ JS_MEDIA_URL, CSS_MEDIA_URL = [MEDIA_URL] * 2
 
 STATIC_MANAGEMENT = {
     'css': {
-        'css/starterapp.min.css': [
+        'css/starterapp.css': [
             'css/bootstrap.min.css',
             'css/screen.css'
         ],
     },
     'js': {
-        'js/myjsfile.js': [
-            'js/mynewfile.js',
-            'js/anotherfile.js'
+        'js/starterapp.js': [
+            'js/bootstrap.min.js',
         ],
     }
 }
