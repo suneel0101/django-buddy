@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
-from settings import settings
+import settings
 
 from starterapp.views import LandingView, logout, home
 

@@ -1,5 +1,6 @@
 import shutil
 import os
+import sys
 from optparse import make_option
 
 from django.core.management.base import BaseCommand
@@ -10,21 +11,23 @@ class Command(BaseCommand):
         make_option("-p", "--path", type="string", dest="path", default=None, help='Path to folder'),
         make_option("-n", "--name", type="string", dest="name", default=None, help='Name of project'),
         make_option('--deploy', action='store_true', dest='deploy', default=False, help="Deploys to Heroku."),
+        make_option("-a", "--app", type="string", dest="app", default=None, help='Name of app'),
     )
 
     def handle(self, *args, **kwargs):
         self.plant_seed(**kwargs)
+        self.app_name = kwargs.get('app')
+        if self.app_name:
+            self.rename_app()
         self.install()
         print "Syncing local copy of your app..."
         self.sync_local()
-        self.setup_gitignore()
         if kwargs.get('deploy'):
             print "!!!!!!!!!!!!!!! DEPLOYING TO HEROKU !!!!!!!!!!!!!!!!!!"
             self.deploy()
             print "Your app is now live! Check it out!"
         else:
-            print "Running local server..."
-            self.runserver()
+            print "Your app is setup at {}".format(self.destination)
 
     def plant_seed(self, **kwargs):
         source = os.getcwd()
@@ -48,6 +51,28 @@ class Command(BaseCommand):
         os.system('find . -name "default_db" -exec rm -rf {} \;')
         os.system('rm starterapp/management/commands/generate.py')
 
+        self.destination = destination
+
+    def rename_app(self, **kwargs):
+        views = self.destination + '/urls.py'
+        settings = self.destination + '/settings/__init__.py'
+        self.replace_app_name_in_file(views)
+        self.replace_app_name_in_file(settings)
+        os.system("mv starterapp {}".format(self.app_name))
+
+    def replace_app_name_in_file(self, path_to_file):
+        _file = open(path_to_file, 'r')
+        lines = _file.readlines()
+        _file.close()
+
+        _newfile = open('tmpfile.py', 'w+')
+        for line in lines:
+            _newfile.write(line.replace("starterapp", self.app_name))
+        _newfile.close()
+
+        os.system('rm {}'.format(path_to_file))
+        os.system('mv tmpfile.py {}'.format(path_to_file))
+
     def install(self):
         print "Installing virtualenv with distribute..."
         os.system('virtualenv venv --distribute')
@@ -55,23 +80,8 @@ class Command(BaseCommand):
         os.system('pip install -r requirements.txt')
         print "Syncing db..."
 
-    def setup_gitignore(self):
-        # f = open(os.getcwd() + '.gitignore', 'w+')
-        # f.write('*.pyc\n')
-        # f.write('venv/*\n')
-        # f.write('default_db\n')
-        # f.write('.DS_Store\n')
-        # f.write('active.py\n')
-        # f.close()
-        pass
-
     def sync_local(self):
-        os.system('python manage.py syncdb')
-        print "Running initial South migration..."
-        os.system('python manage.py migrate')
         print "Initializing git repo"
-        os.system('git remote rm master')
-        os.system('git remote rm buddy')
         os.system('git init')
 
     def runserver(self):
@@ -80,7 +90,6 @@ class Command(BaseCommand):
     def deploy(self):
         os.system('heroku create')
         os.system('git add .')
-        # Hacky, TODO: make it less hacky
         os.system('git rm starterapp/management/commands/generate.py')
         os.system("git commit -m 'first commit to heroku'")
         os.system('git push heroku master')
