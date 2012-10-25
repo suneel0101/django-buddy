@@ -1,3 +1,6 @@
+import os
+from os.path import join
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -21,6 +24,8 @@ SITE_ID = 1
 USE_I18N = True
 
 USE_L10N = True
+
+PROJECT_ROOT = './'
 
 MEDIA_ROOT = 'media'
 
@@ -102,18 +107,18 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 # Static File Management
 JS_MEDIA_URL, CSS_MEDIA_URL = [MEDIA_URL] * 2
+STATIC_MANAGEMENT_COMPRESS_CMD = 'java -jar %syuicompressor.jar %%s' % PROJECT_ROOT
 
 STATIC_MANAGEMENT = {
     'css': {
         'css/starterapp.min.css': [
             'css/bootstrap.min.css',
-            'css/screen.css'
+            'css/screen.css',
         ],
     },
     'js': {
-        'js/myjsfile.js': [
-            'js/mynewfile.js',
-            'js/anotherfile.js'
+        'js/starterapp.min.js': [
+            'js/bootstrap.min.js',
         ],
     }
 }
