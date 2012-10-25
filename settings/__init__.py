@@ -70,10 +70,11 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-     'django.contrib.admin',
-     'django.contrib.admindocs',
-     'starterapp',
-     'south'
+    'django.contrib.admin',
+    'django.contrib.admindocs',
+    'starterapp',
+    'south',
+    'static_management',
 )
 
 LOGGING = {
@@ -94,6 +95,28 @@ LOGGING = {
     }
 }
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.request',
+)
+
+# Static File Management
+JS_MEDIA_URL, CSS_MEDIA_URL = [MEDIA_URL] * 2
+
+STATIC_MANAGEMENT = {
+    'css': {
+        'css/starterapp.min.css': [
+            'css/bootstrap.min.css',
+            'css/screen.css'
+        ],
+    },
+    'js': {
+        'js/myjsfile.js': [
+            'js/mynewfile.js',
+            'js/anotherfile.js'
+        ],
+    }
+}
 
 try:
     from local import *
