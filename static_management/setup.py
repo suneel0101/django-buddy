@@ -14,7 +14,7 @@ setup(
     include_package_data=True,
     platforms='any',
     install_requires=[
-        'django==1.1'
+        'django==1.11.29'
     ],
     classifiers=[
         'Environment :: Web Environment',
